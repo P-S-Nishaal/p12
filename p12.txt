@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+ <title>AngularJS Date Display</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ background-color: #f4f4f4;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ }
+ .date-container {
+ text-align: center;
+ }
+ .date {
+ font-size: 24px;
+ color: #333;
+ }
+ </style>
+</head>
+<body>
+ <div ng-controller="DateController" class="date-container">
+ <h1>Current Date:</h1>
+ <div class="date">{{ currentDate | date:'fullDate' }}</div>
+ </div>
+ <script 
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <script>
+ var app = angular.module('myApp', []);
+ app.controller('DateController', function ($scope, $interval) {
+ $interval(function () {
+ $scope.currentDate = new Date();
+ }, 1000);
+ });
+ </script>
+</body>
+</html>
